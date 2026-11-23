@@ -12,12 +12,14 @@
       <div class="brand">
         <div class="brand-title">SCOUTING TECHNICAL FILE</div>
         <div class="brand-sub">
-          Module 5: Reporting — Professional Diploma in Football Scouting and Analysis — Barça Innovation Hub
+          Module 5: Reporting — Professional Diploma in Football Scouting and Tactical Analysis — Barça Innovation Hub
         </div>
       </div>
 
       <div class="chip" id="chipSeason">Season: —</div>
     </header>
+
+    <p class="small" role="note">Historical educational case study, not a live player feed. The 2025/26 entry is a partial-season snapshot. Source-extraction dates are not recorded here; displayed values and scouting observations require verification before professional use. <a href="./DATA_SOURCES.md">Data provenance and limits</a>.</p>
 
     <div class="layout">
 
@@ -244,13 +246,13 @@
         <section class="charts">
           <div class="chart">
             <div class="chart-title">SDR% BY SEASON</div>
-            <canvas id="chartSdr" width="520" height="200"></canvas>
+            <canvas id="chartSdr" width="520" height="200" role="img" aria-label="Historical successful dribble rates by season; the 2025/26 sample is partial."></canvas>
             <div class="chart-note">Line = Successful Dribble Rate (SDR%) per season.</div>
           </div>
           <div class="chart">
             <div class="chart-title">GOAL INVOLVEMENT (GI) BY SEASON</div>
-            <canvas id="chartGi" width="520" height="200"></canvas>
-            <div class="chart-note">Bars = Goals + Assists per season.</div>
+            <canvas id="chartGi" width="520" height="200" role="img" aria-label="Historical goals plus assists by season; the 2025/26 sample is partial."></canvas>
+            <div class="chart-note">Bars = goals + assists in the stored snapshot. The 2025/26 sample is partial; totals are not normalized for minutes played.</div>
           </div>
         </section>
 
@@ -282,16 +284,16 @@
         </section>
 
         <footer class="footer">
-          <div><strong>Project developed by João Andrade — 2026</strong></div>
+          <div><strong>Project developed by João Salero — 2026</strong></div>
           <div class="footer-sub">
-            Module 5: Reporting — Professional Diploma in Football Scouting and Analysis — Barça Innovation Hub
+            Module 5: Reporting — Professional Diploma in Football Scouting and Tactical Analysis — Barça Innovation Hub
           </div>
         </footer>
       </main>
     </div>
   </div>
 
-  <script src="./app.js"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
 
