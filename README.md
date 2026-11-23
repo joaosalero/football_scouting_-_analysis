@@ -1,85 +1,85 @@
-# Scouting Technical File — Désiré Doué (RW) — Season Selector (MVC)
+# Football scouting technical file — Désiré Doué
 
-This repository hosts a web-based **Technical File** created using the Activity 1 template concept, submitted for:
+A static, interactive scouting report developed by **João Salero** as an educational
+exercise for the Professional Diploma in Football Scouting and Tactical Analysis
+at Barça Innovation Hub (2026). This is an independent student project; it does not
+represent an official club, provider or institution publication.
 
-**Module 5: Reporting**  
-**Professional Diploma in Football Scouting and Analysis — Barça Innovation Hub**
+The report combines season selection, player information, descriptive metrics,
+canvas charts and authored scouting observations. It demonstrates a small JavaScript
+data model and a browser interface without a framework, backend or external runtime service.
 
-The page is deployed via **GitHub Pages** and uses a **single Season selector** (22/23 to 25/26) that updates all season-dependent data, including age calculation rules.
+**Historical case study:** the stored figures are manually transcribed snapshots,
+not current statistics. The 2025/26 entry is a partial season. Exact source URLs and
+extraction dates are not recorded here, so the values cannot be independently reproduced
+from this repository. See [data provenance and limitations](DATA_SOURCES.md).
 
----
+## Run locally
 
-## What this project is
+Serve the repository over HTTP so the browser can load its JavaScript modules:
 
-- A structured **Technical File** for **Désiré Doué** (RW / Winger), aligned with the course template.
-- Objective season-by-season data (matches, minutes, goals, assists, rating, xG/xA, etc.).
-- A specific emphasis on **Outstanding dribbling ability** using **SDR% (Successful Dribble Rate)** plus volume indicators.
+```bash
+python3 -m http.server 8000 --bind 127.0.0.1
+```
 
----
+On Windows, use `py -3 -m http.server 8000 --bind 127.0.0.1` if appropriate for your
+Python installation. Open <http://127.0.0.1:8000>. No dependency installation or build
+step is required. Opening `index.html` directly through `file://` may block module loading.
 
-## How to use (for reviewers)
+For GitHub Pages, publish the repository root. The expected project URL is
+<https://joaosalero.github.io/football_scouting_-_analysis/>; this URL is not a
+claim that the current deployment has been verified.
 
-1. Open the GitHub Pages link for this repository.
-2. Select the season in the left panel:
-   - 2022/23
-   - 2023/24
-   - 2024/25
-   - 2025/26 (default)
-3. The page updates:
-   - Identity block (club/league per season)
-   - KPIs (including **SDR%** and successful dribbles per match)
-   - Season tables (finishing / creativity / passing / defending / additional)
-   - Charts (SDR% trend and GI trend)
+## Explore the report
 
----
+Choose a season from 2022/23 to 2025/26. The identity block, age reference, KPIs,
+metric tables and generated summary update together. The charts show all stored
+snapshots and remain a historical overview when the selection changes. Goals plus
+assists are raw totals, so the partial 2025/26 entry is not directly comparable with
+full-season totals. Dragging the pitch marker changes only the visual position and
+does not persist a new player role.
 
-## Age calculation rules (reproducibility)
+The default season uses the fixed **age reference** `2026-01-12`; earlier seasons
+use 1 August of the season's start year. This date controls age calculation only.
+It is not an asserted data-extraction date or a freshness indicator.
 
-To ensure consistent review output:
+## Data and interpretation
 
-- Default season (2025/26) uses a **frozen date**: `2026-01-12`.
-- Past seasons use a reference of **01 August** of the season start year (e.g., 2022/23 → 01 Aug 2022).
+SDR% means successful dribbles divided by attempted dribbles, multiplied by 100.
+The denominator is absent from the retained dataset, so displayed SDR rates are
+transcribed values rather than recomputed measurements. The numeric interpretation
+bands are illustrative exercise thresholds, not measured league averages or validated
+European rankings. Scouting text is authored interpretation and should be checked
+against video and a complete dataset before recruitment decisions.
 
-These rules can be edited in `data.js` under `CONFIG`.
+## Structure
 
----
+| File | Responsibility |
+| --- | --- |
+| `data.js` | Single source for player details, historical snapshots and interpretation thresholds |
+| `app.js` | Imports the model and renders controls, tables, summaries and charts |
+| `index.html` | Accessible page structure and chart descriptions |
+| `styles.css` | Presentation and responsive layout |
+| `DATA_SOURCES.md` | Provenance gaps, sampling limits and reuse considerations |
 
-## SDR evaluation context (why it matters)
+Edit `data.js` to change model values; there is no second dataset in the controller.
 
-**SDR% (Successful Dribble Rate)** measures 1v1 dribble efficiency:  
-successful dribbles / attempted dribbles.
+## Validation
 
-The report includes benchmark bands (heuristic scouting context) to interpret whether a winger’s SDR% is:
-- around league average,
-- good,
-- a differentiator,
-- or elite.
+With Node.js available:
 
----
+```bash
+node --check app.js
+node --check data.js
+node --test tests/scouting.test.cjs
+```
 
-## Project structure (MVC light)
+The regression checks exercise default rendering, historical age references, season
+changes and the model/controller connection with a minimal DOM harness. They do not
+verify external statistics, image rendering, screen-reader behavior or a live deployment.
 
-- `data.js` — **Model** (player identity, seasons, report text)
-- `app.js` — **Controller + View** (rendering, events, charts)
-- `index.html` — View layout (static structure)
-- `styles.css` — Barça-inspired theme (clean/elegant)
-- `README.md` — documentation
+## License
 
----
-
-## Data sources (references)
-
-Publicly available sources used for compiling player identity and statistics:
-- **Sofascore** (ratings, season stats, xG/xA, etc.)
-- **LinkedIn** (public profile references where applicable)
-- **French Football Federation (FFF)** (national team information)
-- **Paris Saint-Germain official website** (club information)
-
-If required by the assessor, explicit URLs can be added under this section.
-
----
-
-## Author
-
-**Project developed by João Andrade — 2026**
-
+The repository's original code is available under the [MIT license](LICENSE).
+Provider data, institutional names and third-party marks retain their respective
+rights; this code license does not establish permission to redistribute external datasets.

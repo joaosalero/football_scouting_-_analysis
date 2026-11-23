@@ -1,24 +1,25 @@
-// data.js (MODEL) - Doué + temporadas 22/23 a 25/26 + SDR
+// Historical educational dataset; see DATA_SOURCES.md for provenance gaps and limitations.
 
 export const CONFIG = {
   DEFAULT_SEASON: "2025/26",
-  // frozen "today" to match your rule
+  // Fixed age reference, not a source-extraction date or the current date.
   FROZEN_TODAY_ISO: "2026-01-12",
   // for past seasons: age reference = Aug 1 of season start year
   PAST_REF_MONTH: 8,
   PAST_REF_DAY: 1,
 
-  // SDR benchmark bands (heuristic ranges, used for narrative)
-  LIGUE1_AVG_WINGER_SDR_PCT_RANGE: [52, 54],
-  EURO_TOP_WINGER_SDR_PCT_GOOD: 55,
-  EURO_TOP_WINGER_SDR_PCT_DIFFERENTIATOR: 60,
-  EURO_TOP_WINGER_SDR_PCT_ELITE: 65
+  // Illustrative exercise thresholds; no validated league reference cohort is available.
+  SDR_REFERENCE_BAND_PCT: [52, 54],
+  SDR_ABOVE_REFERENCE_PCT: 55,
+  SDR_HIGH_PCT: 60,
+  SDR_VERY_HIGH_PCT: 65
 };
 
 export const PLAYER = {
   name: "Désiré Nonka-Maho Doué",
   nationality: "France",
   dobISO: "2005-06-03",
+  dobDisplay: "03 Jun 2005",
   heightCm: 181,
   weightKg: 70,
   preferredFoot: "Right",
@@ -38,23 +39,23 @@ export const PLAYER = {
 `Désiré Doué presents good overall coordination and balance, enabling close control under contact. His short-distance acceleration is a clear physical asset for wide isolation scenarios. While not dominant aerially, he shows sufficient lower-body strength to protect the ball during dribbling. There remains development margin in upper-body strength, which could improve robustness in elite-level duels.`,
 
     technical:
-`Doué’s standout technical quality is his 1v1 dribbling efficiency. Across the observed seasons he records a consistently high Successful Dribble Rate (SDR), reaching the high-60% range in peak seasons. This places him well above the typical Ligue 1 winger baseline and within an elite range for European wide players.
+`The author identifies close control and 1v1 dribbling as qualities to investigate through video review. The stored snapshots show SDR values ranging from 28% to 69%; the later PSG entries are lower than the earlier Rennes entries. This dataset does not establish a consistently elite rate, a causal explanation, or a validated comparison with other wingers.
 
-Profile indicators:
-• Close control in tight spaces; strong body feints and change of direction.
-• Effective timing to engage the fullback and eliminate without requiring physical dominance.
-• Combines high success rate with meaningful volume, indicating repeatability rather than isolated events.
-• Passing range complements the dribble threat (switches and third-man options).`,
+Scouting observations and hypotheses:
+• Close control, body feints and changes of direction merit video review.
+• Assess the timing of engagement against a fullback and subsequent decisions.
+• Interpret success rate alongside attempts, minutes, role and opposition.
+• Review whether passing options complement the dribble threat.`,
 
     tactical:
 `Operates primarily as a right winger, capable of holding width or attacking the half-space. Shows awareness to isolate the opposing fullback and create favorable 1v1 situations. Fits possession-based models that require wide players to break defensive structures via individual actions. Next development focus is decision consistency after the dribble (final pass vs. shot selection).`,
 
     opinion:
-`High-upside winger profile with elite 1v1 potential. The dribble efficiency is a differentiator relative to average wide players and supports “outstanding dribbling ability” within the project’s criteria. Recommendation: continue monitoring with emphasis on translating 1v1 superiority into repeatable final-third output (xA, key passes, and shot quality) against elite opposition.`
+`Scouting hypothesis: a winger profile with 1v1 potential worth further review. The historical figures alone do not establish an elite ranking or a recruitment recommendation. Continue monitoring with complete, consistently defined samples, video evidence and context for role, minutes and opposition.`
   }
 };
 
-// Season dataset (from your screenshots)
+// Manually transcribed historical snapshots; exact extraction dates and screenshots are not included here.
 export const SEASONS = {
   "2022/23": {
     club: "Stade Rennais",
